@@ -7,15 +7,12 @@ using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 
-
 try
 {
     await using var host = await StartSilo();
     await using var client = await ConnectClient();
     await DoClientWork(client);
     Console.ReadKey();
-
-
     return 0;
 }
 catch (Exception ex)
@@ -33,7 +30,6 @@ static async Task DoClientWork(IGrainFactory client)
         await grain.SetTemperature(temperature);
     }
 }
-
 
 const string clusterId = "dev";
 
